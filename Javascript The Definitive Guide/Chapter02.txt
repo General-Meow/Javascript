@@ -1,0 +1,63 @@
+Chapter 2 - Lexical Structure
+The lexical structures of a language are the rules of how to use and structure it to write programs. 
+It specifies the syntax on how to use variables, how statements are separated, how functions are formed etc
+
+Javascript programs must be written in Unicode, which is a superset to ASCII and Latin1. 
+ECMAScript 3 apps must be written in Unicode version 2.1 or later while ECMAScript 5 requires Unicode 3 or later
+
+Javascript is a case sensitive language
+
+Javascript supports Unicode escape sequences which allow you to input 6 ASCII characters to represent a single 16 bit Unicode character. 
+This is because not all hardware/software support full Unicode input.
+These start with \u then 4 hex characters i.e. \u0020 is a space character
+
+Unicode escapes can be used in variable names, comments, regular expressions and string literals
+
+Javascript supports two types of comments. // and /* */
+
+Literals are in code values (constants) stored in a Javascript program. I.e. "hi", 1.2, 'i', true, false, null
+
+Identifiers are names given to variables. They must start with a letter, underscore or dollar sign. The rest of the identifier can be the same plus digits
+
+As Javascript supports Unicode, you can use Unicode characters in variable names. So the pi sign or accented e's could be used
+ 
+Javascript reserve some keywords that cannot be used as variable names. These keywords are: 
+break 		delete 	function	return 		typeof
+case   		do 	if 		switch 		var
+catch 		else 	in 		this 		void
+continue 	false 	instanceof 	throw 		while
+debugger 	finally 	new 		true 		with
+
+ECMAScript 5 has reserved the keywords 
+class	const	enum	export	 extends  import   super
+
+Also in ECMAScript5, strict mode reserves the following keywords. 
+implements	let		private	public		yield 
+interface	package	protected	static
+
+Also in ECMAScript 5 dont use the following for variables, function names or identifiers. 
+arguments	eval
+
+ECMAScript 3 reserved all of Java’s keywords but were relaxed in ECMAScript5. The following should not be used 
+abstract 	double 		goto 		native 		static
+boolean 	enum 		implements 	package 	super
+byte 		export 		import 		private 	synchronized
+char 		extends 	int 		protected 	throws
+class 		final 		interface 	public 		transient
+const 		float 		long 		short 		volatile
+
+
+Javascript predefines global variables and functions. these are: 
+
+arguments 	encodeURI 		Infinity 		Number 	RegExp
+Array 		encodeURIComponent 	isFinite 	Object 		String
+Boolean 	Error 			isNaN 		parseFloat 	SyntaxError
+Date 		eval 			JSON 		parseInt 	TypeError
+decodeURI 	EvalError 		Math 		RangeError 	undefined
+decodeURIComponent 	Function 	NaN 		ReferenceError URIError
+
+Javascript uses semi colons to separate statements but you can omit these if the statements are on separate lines. 
+It's simply a matter of coding style. Some people prefer to omit them all the time and only use them when required, while others uses them all the time.
+when using the omit style, if the next line can be parsed without a semi colon then it can be considered as part of the first line
+
+There’s an exception to the rule in that if you use return, continue or break then if there's a new line straight after with no semi colon then the interpreter will assume a semi colon is there

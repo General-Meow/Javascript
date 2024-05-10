@@ -1,0 +1,129 @@
+Chapter  5
+
+compound statements are a number of statements grouped within curly braces.  i.e.
+
+{
+  x = "hello";
+  y = "how are you";
+  z = "I'm fine";
+}
+
+
+you use the compound statements as it's and single statement and you can place them anywhere javascript exepects a single statement
+
+
+the compound block itselc does not end with a semi colon but the statements within it do
+
+
+javascript does not have block scope so variables inside the block are not private
+
+
+an empty statement is a statement with nothing in it and it does nothing. ie
+
+;
+
+
+it can be used like a compound block where he block does nothing ie
+
+while(x < 10) ;
+
+
+when declaring variables in a statement you can define more then one variable by seperating them with commas.  you can also optionally initialise them. i.e.
+
+var x =1, y = 2, z = 3;
+
+
+variables defined in functions have scoped to that function while variables defined in the top level creates global variables. the global variables are properties of the global object and cannot be deleted
+
+
+unitialized variables have a value of undefined
+
+
+variables are hoisted to the top of functions and are undefined until the line where they are initialized. variables dinner in loops are also hoisted
+
+
+it's possible to declare the same variable more than once
+
+
+functions can be assigned to expressions i.e.
+
+var x = function(a){ return 5;}; //this one has no name
+
+and functions are defined like
+
+function afunctionName(a){ return 5;};
+
+both forms create a new object functions with names are hoisted and can be called before it's definition
+
+
+functions can be defined at the top level or nested within function. when needed these functions must be at the to level within that parent function. meaning needed functions cannot appear in if statements or loops
+
+
+switch(expressions ){
+case x:
+   x = 1;
+   break; 
+default: 
+   x  =2;
+}
+in switch statements the expression is evaluated and strictly equated === against a case
+
+
+for loops can be more complicated in that they can contain more than one expression and test.  i.e.
+
+var x,  y
+
+for(x=0, y=10; x<10 && y > 0; x ++, you-- ){}
+
+
+the expressions in a for loop can be omitted but at least require the 2semi colons
+
+
+the for in loop syntax looks like this
+for(variable in object)
+
+it's used to loop through the properties of an object and assign the names if them to the variable.  you can then use the name to get the values of the properties using the array syntax.  i.e.
+
+for( var a in o){
+console.log(o[a]);
+}
+
+the variable can be any expression that could end up holding a value i.e. var a []; for(a[I++] in o)
+
+object can be any expression that could resolve or concert to and object
+
+
+not all properties of an object will be iterated over in a for in loop.  properties such as functions provided by the language won't be but any properties you define will be
+
+
+the ecmascript 5spec does not done an order in which properties are iterated in but most browsers do so in the order of which they were created
+
+
+inherited properties are also iterated over with inherited going first over the object own properties
+
+
+any statement can be labeled with the following syntax.
+
+id: statement
+
+it's only really useful to label bits that have bodies of other statement's such as loops.
+
+
+break and continue are the only javascript keywords that use statements ie
+
+mainloop: while (true){
+
+alert(1);
+break mainloop;
+)
+
+
+break keyword is used to break from the most inner loop it's contained in.  it can only be used in swtich and loops.
+
+when used with labels will break the specified label
+
+
+the same can be done with a continue statement. it can continue to the next iteration or can finish the current loop
+
+
+return statement's are used within functions to return a cake from them or break out of them early. they do not need to turn values and if they don't undefined is returned

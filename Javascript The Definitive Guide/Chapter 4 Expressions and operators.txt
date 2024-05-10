@@ -1,0 +1,149 @@
+Chapter 4 Expressions and operators
+
+Operands that cannot be converted during a arithmetic operation with result in NaN I.e ['s','y'] + 1 where the array will probably convert to nan
+
+
+Numbers in JavaScript are always floating point numbers. So whole numbers divided will always return a float. Dividing by zero returns infinity
+
+
+The add operator will give priority to string concatenation, if either one of the operands is not a number. So it will attempt to convert the non number operand to a string. But if either is an object an object to primitive conversion occurs and if it becomes a string then string concatenation happens
+
+
+The unary operators +, -, ++, -- operate on a single operand.
+
+
+The + and - operators converts the operand to a number and changes the sign
+
+
+The ++ and -- increments and decrements the operand. It will also convert the operand and never attempt to do string concatenation. i.e "2"++ converts to a number then increments
+
+
+bitwise operators manipulate numbers in a binary format
+
+
+bitwise operators expect numbers and tests then as if they are 32 bit numbers instead of 64
+
+
+bitwise and (&) does a and operation on all bits of a number I.e 0x1234 & 0x00FF = 0x0034
+
+
+bitwise or (|) doors an or on ask the numbers bits 0x1234 | 0x00FF = 0x12FF
+
+
+bitwise xor (^) is the exclusive or operator where only one of the bits is allowed to be true in order for the result to be true I.e 0xFF00 ^ 0xF0F0 = 0x0FF0
+
+
+bitwise not (~) reverses the bits ~0xFF00 = 0x00FF
+
+
+bitshift left (<<) moves the digits of a binary number to the left by the specified amount I.e 3 << 1 bitshifts to the left one position. bit shifting once is the same as multiplying by 2 so the above equates to 6. bit shifting by 2  is equal to multiplying by 4
+
+
+bit shift right (>>) is like left but losses the bits on the right. it preserves the sign so a positive number fills the right with zeros while a negative number fills it with ones
+
+
+shift right with zero fill (>>>) is like shift right but forgets the sign and makes it a positive
+
+
+The === operator is known as the strict equality operator, while the == operator is just known as the equality operator
+
+
+There's also the not equal != operator. Where it's returns true if 2 operands are not the same and the strictly not equal !== where it returns false if the operands are strictly equal
+
+
+The equals operator on objects compare by reference so two objects that have the same value are not equal if compared using the equality == operator (same with arrays). it will only return true if the references refer to the same instance of the object
+
+
+The == operator is a less strict equals operator where if both operands are not the same type then conversion occurs before checking for equality
+
+
+The strict equality === never attempts type conversion so '1'===1 returns false because the number never gets converted
+
+
+The in operator checks to see if the left operator exists as a property on the right. the left operator should be a string or be able to convert to a string and the right need to be an object. I.e.
+
+var obj = { x: 3, y: 6 }
+'x' in object //returns true
+'b' in obj // returns false
+
+
+The instanceof operator tests whether an object on the left in an instance of the class defined on the right. the class definition is really a constructor function name.
+
+all type instances are instance of the object class and therefore will return true
+
+
+falsy values are false, null, undefined,  0, -0, NaN and "".all other values including objects are truthy
+
+
+Boolean and and or operators can be operated on truthy and falsy operands
+
+
+If operating on a truthy or falsy value the first operand is converted to a Boolean. If it's a falsy value then that operand is returned and not a Boolean
+
+
+But if the operand on the left is truthy the then value on the right is evaluated and returned
+
+I.e
+
+var o = { x = 1; } ;
+var n  = null;
+
+o && o.x; returns o
+n && o;returns n
+
+
+The Boolean or operator is just like the and operator. it will return the left operand if it's truthy if it isn't then it will evaluate the right and return that
+
+
+The logical not operator ! inverts the Boolean. it can be used on both truthy and falsy values. when it's used with then then a proper true or false is returned
+
+
+javascript has the ability to attempt to interpret strings. it does so by using the eval() global method
+
+i.e eval ("3+1") returns 4
+
+
+The eval function takes a single string parameter. if anything else is provided then it simply gets returned
+
+
+If a String is passed then the function attempts to treat it like a javascript statement and execute it
+
+
+It will return the value of the last expression or undefined
+
+
+Using eval() uses the local scope when referencing and defining variables .i.e. eval("x") will look for a variable can in the local scope or eval("x=1") changes the local variable to 1
+
+
+You can even declare functions within eval
+
+
+The sing you pass to eval must make syntax sense. if it would work without the eval the it would work fine otherwise it may throw a syntax error
+
+
+In javascript it is possible to alias functions. and in doing so to eval, the interpreter would not be able to optimise the code. in ecmascript 3,the spec allowed the interpreter to throw evalerror. but most however made it such that aliasing eval will run it in yes global scope allowing you to create global variables
+
+
+ecmascript5 further this such that calling it indirectly will not allow you to modify the local scope i.e. create or modify the current function. this will allow optimization to the local function
+
+
+ecmascript 5 strict mode allowed eval to query variables and say them but it does not allow you to define new variables
+
+
+the typeof operator is a unary that goes Before any operand.  it returns a string description of the operand.  i.e. typeof null returns object and typeof "blah " returns "string "
+
+
+the delete operator is another unary operator that works on a single operand.  it's used to delete elements of any array or properties of an object.  i.e.
+
+var arr = ["a","b","c"];
+delete are[2]; //delete the element at index 2
+
+var objects = { x: 2 };
+delete objects.x delete the property x on objects
+x in objects //returns false
+
+
+user defined variables with var and functions cannot be deleted
+
+
+the void operand is another unary operator that evaluates it's operand and returns void

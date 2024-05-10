@@ -1,0 +1,9 @@
+Chapter 1
+- ECMAScript is known as the standard for Javascript. ECMA is currently at version 5. 
+- Version 3 has been at the most part implemented by all browsers and version 4 was skipped as it was too ambitious.
+
+- You don't have to modify files to test out is code. You can use firebugs console tab to test out Javascript in the console. 
+- Here can write any Javascript and it will run in browser
+
+- Properties of an object can be accessed via a . (dot) or [] (brackets) operator.
+-- ie object.myproperty or object[myproperty]

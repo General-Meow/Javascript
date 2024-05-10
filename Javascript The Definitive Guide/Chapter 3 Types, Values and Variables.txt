@@ -1,0 +1,218 @@
+Chapter 3 Types, Values and Variables
+
+
+JavaScript types can be divided into two categories. primitives and objects. primitives I.e, numbers, strings and booleans. null and undefined are primitive types
+
+
+JavaScript objects are members of the type object. these usually have name value pairs. there's a very special type of object called the global object
+
+
+arrays are also objects that are unordered collection of data. arrays behave differently to objects and you use them differently too.
+
+
+functions are a special kind of object. its an object that has a defined set of executable code
+
+
+functions that are used with the new operator are called constructors. these are used to create new instances of objects
+
+
+apart from arrays and functions, JavaScript defines three other classes. these are Date, RegExp and Error
+
+
+the JavaScript interpreter performs garbage collection to free up memory, when an object can no longer be referred to
+
+
+JavaScript converts values liberally for you. I,e if a function requires a string but you have a number it will convert it to a string, or if it requires a boolean it will try and convert it for you
+
+
+variables are assign with the var keyword. they are untyped which means you can assign a variable with one type the reassign it with another type
+
+
+JavaScript does not distinguish between numbers and floating point numbers. all numbers are represented in 64 bit floating point format
+
+
+numbers that are written directly into a program are called numeric literals
+
+
+JavaScript supports base 10 numeric literals (normal numbers) and base 16 literals (hexadecimal) I.e. 0x123442
+
+
+some implementations of JavaScript support octal literals (base 8) these start with a leading 0 zero. I.e, 0123. you should not use octal literals as there's no way to tell if your current implementation supports it. plus in ecmascrip5 strict mode does not allow it
+
+
+floating point numbers have a decimal point.
+
+
+JavaScript provides operators for arithmic operations I.e. add +, subtract - etc. it also provides more complex mathematical operations through functions on the Math object. these include. math.pi for pi. math.pow(2,52) 2 to the power of 52, math.round(0.6) round to the nearest 1.0. math.Max(x,y,z) get the highest number etc
+
+
+JavaScript does not throw errors due to arithmic operations. it simply returns either Infinity, negative zero or nan (not a number)
+
+
+Infinity is returned when an overflow occurs I.,e. number has reached over the largest number. and -Infinity is returned when the lowest number is breached
+
+
+underflow occurs when you get a number that is so close to zero that it's basically the same number. this returns a negative zero
+
+
+when dividing by zero you get either infinity or negative zero but when you divide zero by zero you get nan, you can also be nan when dividing infinity by infinity
+
+
+in ecmascript 3 infinity and nan are read & write values in ecmascript 5 they are just read values
+
+
+nan does not support equality even to itself, so you can't even do x == nan as it won't work, instead you have to do x != x. this will return true is x is nan or NaN == NaN returns false while NaN != NaN returns true
+
+
+the function isNan() does the same thing and returns true if an argument is not a number
+
+
+JavaScript like many other languages have issues with storing floating point numbers as it losses pressision the finer the number gets. this is because JavaScript can only store up to a certain decimal point. an example of this is 0.2 - 0.1 == 0.1 but 0.3 - 0.2 == 0.09999999998 so 0.2 - 0.1 == 0.3 - 0.2 is false
+
+
+JavaScript provides a Date type and constructor to create and manipulate dates. i,.e var d = new Date(2012, 0, 1) creates a date 1st Jan 2012. you can also call methods on date objects I.e getMonth() getYear()
+
+
+Strings are immutable ordered 16 bit values
+
+
+String literals are denoted text within a pair of matched single or double quotes. you can have single quotes contained in a pair of doubles or doubles in a pair of singles
+
+
+ecmascript 3 requires Strings to be declared on a single line while in ecmascript 5 you can have them declared on multiple lines if the line end in a backslash
+
+
+If you want a quote character to appear in a String literal you must escape it with a backslash
+
+
+\x followed by 2 characters will use the Latin 1 character specified by the 2 characters. Same with \u and 4 hex digits. this will use the Unicode character denoted by the 4 digits
+
+
+Strings have a number of methods that can be invoked on them. Some are: length, charAt(x), substring(x, y), indexOf('x'),  lastIndexOf('x'), indexOf('x', 3), replace, toUpper
+
+
+Strings are immutable so these methods will return new strings
+
+
+JavaScript provides the RegExp() constructor to create regex typed objects. JavaScript uses perl type syntax for regex expressions.
+
+The Constructor doesn't need to take a string literal but if it does, expects a regex
+
+
+A JavaScript regex literal is text between two forward slashes, there is no requirement for quotes. The second slash can be followed by a number of characters that will modify the behaviour of the regex I.e /^html/ matches a string that starts with html
+
+
+Both regex objects and strings have methods for regex matching
+
+
+example:
+var texttoscan = "hello world 1 2 3";
+var pattern = /d+/g;
+pattern.test(texttoscan);
+texttoscan.search(pattern);
+texttoscan.match(pattern);
+
+
+All values in JavaScript can be converted to a boolean value. Values such as undefined, null, 0, -0, NaN and "" convert to false while ask others including arrays and objects convert to true
+
+
+Theses values that convert to false are called falsey values and others are called truthy
+
+
+null usually represents a keyword that means the absence of a value but in JavaScript you can do a typeof on null and it will return object. so null can represent a type of object that is No object
+
+
+undefined also represents the absence of a value. It's returned when you query an object or array and it doesn't actually exist. Its also returned by functions that don't return anything and for parameters that haven't been provided
+
+
+undefined is actually a global variable unlike null which is a keyword
+
+
+null and undefined basically indicate the absence of a value and doing null == undefined returns true. So using the strict equality operator === returns false
+
+
+The global object is a regular object that's available at the global level and provides and initialises global objects like undefined, nan etc. It's created by the JavaScript interpreter every time a web browser loads a page or when a program starts
+
+Top level code is code that's not within an object and not in a function. In top level you can access the global object by simply doing var global = this;
+
+
+In client side scripting I.e in browsers, the global object is the window object. This object can be referred to by window instead of using the keyword 'this'. The window has a number of other global defined properties that are not defined in the global object
+
+
+Strings, numbers and booleans are not objects and yet they have methods we run against them. This is because JavaScript wraps these in wrapper objects by automatically instantiating objects using String(), Number() and Boolean() constructors and then running the method on the resulting object. Once complete the object is discarded
+
+
+There are no wrapper objects for null and undefined values and running methods on them will return a TypeError
+
+
+JavaScript primitives are compared by value. This means that if 2 primitives have the same value they are considered the same
+
+
+JavaScript objects however are not compare by value. 2 objects are not the same even though they contain the same values
+
+
+Objects are only the same if they refer to the same underlying object
+
+
+Whenever possible, JavaScript will try and convert types and values to the required type. We've seen this conversion to booleans. It also works for strings where JavaScript will try to convert anything to a string and numbers where you'll get a converted number or nan
+
+
+Conversions can also happen during the equality operator == .  I.e "0" == 0 returns true. you can stop the conversions for equality by using the strict equality ===
+
+
+Explicit conversion from one type to another can be done by using the constructor functions without the new operator. I.e. Number("3") will convert string "3" to a Number object
+
+
+Automatic conversions can also occur during operations. I.e. a number will be converted to a string if you use one to add to another string 3 + " eggs" will return "3 eggs"
+
+
++x converts x to a number and !!x converts x to a boolean note the two !!
+
+The Number class provides a number of methods that converts a number to a string. toFixed(x) returns a string to a to a certain decimal point. toPrecision(x) returns a string with a certain number of characters
+
+
+The Number() function is strict and only accepts whole numbers or floating point numbers in a string. it does not accept any other characters in the string. the parseInt() and parseFloat global methods are more flexible in that they will ignore at characters in the provided strings and will attempt to convert i,.e parseInt("3 men") returns 3
+
+
+All objects including a boolean false, arrays and functions return true when converting to a boolean
+
+
+Objects converted to strings use toString() method. javascripts defined types implement this method to return something meaningful. I.e. arrays return a coma speed list and a date object returns a human readable date
+
+Variables are declared with the var keyword. I.e var x. you can declare many on a single line. var x, y; and you can initialise on a single line. var x=3, y=6;
+
+
+Variables that'd aren't initialised have a value of undefined
+
+
+Variables defined outside a function and just within the script tags have global scope. this means they are available every where. variables defined in a function or as function parameters have local scope meaning they exists and can be accessed within that function
+
+
+Local variables that have the same name as global ones take pressidence when referred to in functions
+
+
+You do not need to use the var keyword when defining a global variable. but u do when you define a local one I.e.
+
+globalvar = "x";
+test = function(){
+anothervar  = "c";
+var globalvar = "local";
+console.log(anothervar, globalvar);
+}
+
+here when test is executed, anothervar is created in the global scope and the globalvar variable set to local
+
+
+functions can be nested within functions and each of them have their own scope
+
+
+most languges have a scope called block scope where variables inside the block are only visible within that block. I.e vars within a for loop can only be accessed within that loop. JavaScript however doesn't have block scope and just uses function scope. this means that a variable defined within a function can be accessed anywhere (even before) the declaration
+
+
+the ability to use variables within a function before they are defined is a feature called hoisting. it basically moves all the declarations without initialisations to the top of the function
+
+
+when u create a global variable (without var) what it does is attach itself to the global object. if u create one with the var keyword, it become non configurable, which means it cannot be deleted with the deleted operator
+
+
+you can access the global object with the this keyword while at the top level (outside of a function)
